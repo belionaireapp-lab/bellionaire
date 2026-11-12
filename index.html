@@ -128,9 +128,8 @@
   footer a { color: var(--secundario); text-decoration: none; }
   footer a:hover { color: var(--dourado-claro); }
 
-  [lang="en"] { display: none; }
-  body.en [lang="pt-BR"] { display: none; }
-  body.en [lang="en"] { display: revert; }
+  /* Só dentro do body: o <html lang> também muda e não pode ser escondido. */
+  body:not(.en) [lang="en"], body.en [lang="pt-BR"] { display: none !important; }
 
   @keyframes surgir { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }

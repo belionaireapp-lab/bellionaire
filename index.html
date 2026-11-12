@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BEllionaire · Foco & Disciplina</title>
+<meta name="description" content="App de motivação, foco e disciplina. Em breve na App Store. Entre na lista de espera.">
+<meta name="theme-color" content="#050505">
+<meta property="og:title" content="BEllionaire · Foco & Disciplina">
+<meta property="og:description" content="Disciplina hoje. Liberdade amanhã. Em breve na App Store.">
+<meta property="og:image" content="og.png">
+<link rel="icon" href="simbolo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fundo: #050505;
+    --superficie: #121214;
+    --borda: #2a2a2e;
+    --texto: #f5f5f5;
+    --secundario: #9a9aa0;
+    --dourado: #c9a75a;
+    --dourado-claro: #e6cc8a;
+    --perigo: #d9665b;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: radial-gradient(90% 55% at 50% 0%, #1d180e 0%, var(--fundo) 60%) fixed, var(--fundo);
+    color: var(--texto);
+    font: 300 16px/1.6 Montserrat, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    min-height: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 28px 16px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .topo { width: 100%; display: flex; justify-content: flex-end; }
+  .idiomas { display: flex; gap: 6px; }
+  .idiomas button {
+    font: 400 12px Montserrat, sans-serif;
+    color: var(--secundario);
+    background: transparent;
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: color .2s, border-color .2s;
+  }
+  .idiomas button[aria-pressed="true"] { color: var(--dourado-claro); border-color: var(--dourado); }
+
+  .hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 0; }
+  .simbolo {
+    width: 88px; height: 88px;
+    filter: drop-shadow(0 0 28px rgba(201, 167, 90, .35));
+    animation: surgir .9s ease-out both;
+  }
+  .marca { margin-top: 22px; font-size: 15px; letter-spacing: .28em; animation: surgir .9s .1s ease-out both; }
+  .marca b { font-weight: 700; }
+  h1 {
+    font-weight: 300;
+    font-size: clamp(30px, 8vw, 44px);
+    line-height: 1.2;
+    margin: 34px 0 14px;
+    animation: surgir .9s .2s ease-out both;
+  }
+  h1 b { font-weight: 700; color: var(--dourado-claro); }
+  .sub { color: var(--secundario); max-width: 420px; margin: 0 auto; animation: surgir .9s .3s ease-out both; }
+
+  .recursos {
+    list-style: none; padding: 0; margin: 34px 0 0;
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; width: 100%;
+    animation: surgir .9s .4s ease-out both;
+  }
+  .recursos li {
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    padding: 14px 12px;
+    font-size: 13px;
+    color: #dcdcdf;
+  }
+  .recursos strong { display: block; font-weight: 700; color: var(--texto); font-size: 14px; margin-bottom: 2px; }
+
+  form { width: 100%; margin-top: 34px; animation: surgir .9s .5s ease-out both; }
+  .campo { display: flex; gap: 8px; }
+  input[type=email] {
+    flex: 1; min-width: 0;
+    font: 400 16px Montserrat, sans-serif;
+    color: var(--texto);
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  input[type=email]:focus { border-color: var(--dourado); }
+  button.enviar {
+    font: 700 15px Montserrat, sans-serif;
+    color: var(--fundo);
+    background: linear-gradient(135deg, #f1dca0, var(--dourado) 55%, #a8823d);
+    border: 0;
+    border-radius: 12px;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: transform .15s, opacity .2s;
+    white-space: nowrap;
+  }
+  button.enviar:active { transform: scale(.97); }
+  button.enviar:disabled { opacity: .6; cursor: default; }
+  .mel { position: absolute; left: -9999px; }
+  .aviso { min-height: 22px; margin-top: 10px; font-size: 13px; color: var(--secundario); }
+  .aviso.ok { color: var(--dourado-claro); }
+  .aviso.erro { color: var(--perigo); }
+  .consent { font-size: 11px; color: var(--secundario); margin-top: 4px; }
+  a { color: var(--dourado-claro); }
+
+  footer { color: var(--secundario); font-size: 12px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  footer a { color: var(--secundario); text-decoration: none; }
+  footer a:hover { color: var(--dourado-claro); }
+
+  [lang="en"] { display: none; }
+  body.en [lang="pt-BR"] { display: none; }
+  body.en [lang="en"] { display: revert; }
+
+  @keyframes surgir { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  @media (max-width: 420px) {
+    .campo { flex-direction: column; }
+    button.enviar { padding: 14px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="topo">
+    <div class="idiomas">
+      <button type="button" data-idioma="pt" aria-pressed="true">PT</button>
+      <button type="button" data-idioma="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <img class="simbolo" src="simbolo.svg" alt="">
+    <div class="marca">BE<b>llionaire</b></div>
+
+    <h1 lang="pt-BR">Disciplina hoje.<br><b>Liberdade amanhã.</b></h1>
+    <h1 lang="en">Discipline today.<br><b>Freedom tomorrow.</b></h1>
+
+    <p class="sub" lang="pt-BR">O app para quem constrói em silêncio: frases diárias, foco profundo,
+      tarefas que viram pontos e um ranking para subir de patente.</p>
+    <p class="sub" lang="en">The app for those who build in silence: daily quotes, deep focus,
+      tasks that turn into points and a ranking to climb.</p>
+
+    <ul class="recursos" lang="pt-BR">
+      <li><strong>Frases diárias</strong>Mentalidade todo dia</li>
+      <li><strong>Modo foco</strong>Pomodoro sem desculpas</li>
+      <li><strong>Tarefas com XP</strong>Treino, estudo, leitura</li>
+      <li><strong>Ranking</strong>De Estagiário a BEllionaire</li>
+    </ul>
+    <ul class="recursos" lang="en">
+      <li><strong>Daily quotes</strong>Mindset every day</li>
+      <li><strong>Focus mode</strong>Pomodoro, no excuses</li>
+      <li><strong>Tasks with XP</strong>Workouts, study, reading</li>
+      <li><strong>Ranking</strong>From Intern to BEllionaire</li>
+    </ul>
+
+    <form id="lista" novalidate>
+      <div class="campo">
+        <label for="email" class="mel">E-mail</label>
+        <input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required
+               placeholder="seu@email.com">
+        <input class="mel" name="site" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="enviar" type="submit">
+          <span lang="pt-BR">Quero acesso</span><span lang="en">Get early access</span>
+        </button>
+      </div>
+      <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+      <p class="consent" lang="pt-BR">Só vamos usar seu e-mail para avisar do lançamento.
+        Veja a <a href="privacidade.html">política de privacidade</a>.</p>
+      <p class="consent" lang="en">We'll only use your email to tell you when we launch.
+        See our <a href="privacidade.html?lang=en">privacy policy</a>.</p>
+    </form>
+  </section>
+
+  <footer>
+    <a href="https://www.instagram.com/bellionaireapp/" rel="noopener">Instagram</a>
+    <a href="privacidade.html" id="link-privacidade">
+      <span lang="pt-BR">Privacidade</span><span lang="en">Privacy</span>
+    </a>
+    <a href="mailto:belionaireapp@gmail.com">belionaireapp@gmail.com</a>
+  </footer>
+</main>
+<script>
+  (function () {
+    // Chave publishable do Supabase: é pública por design; só libera a função da lista.
+    var SUPABASE_URL = 'https://oqxiijxprypyxymexflf.supabase.co';
+    var SUPABASE_KEY = 'sb_publishable_VrCJwukN9Q-eeBxRckAf5A_1O4mjKoV';
+    var TEXTOS = {
+      pt: { ok: 'Pronto! Você está na lista. Avisamos no lançamento.', invalido: 'Confira o e-mail.',
+            erro: 'Não deu certo agora. Tente de novo em instantes.', enviando: 'Enviando…' },
+      en: { ok: "You're in! We'll let you know at launch.", invalido: 'Please check your email.',
+            erro: 'Something went wrong. Please try again shortly.', enviando: 'Sending…' }
+    };
+    var idioma = 'pt';
+    var botoes = document.querySelectorAll('[data-idioma]');
+    var email = document.getElementById('email');
+    var aviso = document.getElementById('aviso');
+    var form = document.getElementById('lista');
+    var enviar = form.querySelector('button.enviar');
+
+    function aplicar(i) {
+      idioma = i;
+      document.body.classList.toggle('en', i === 'en');
+      document.documentElement.lang = i === 'en' ? 'en' : 'pt-BR';
+      email.placeholder = i === 'en' ? 'you@email.com' : 'seu@email.com';
+      document.getElementById('link-privacidade').href = 'privacidade.html' + (i === 'en' ? '?lang=en' : '');
+      botoes.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.idioma === i)); });
+    }
+    function mostrar(tipo, texto) {
+      aviso.className = 'aviso ' + tipo;
+      aviso.textContent = texto;
+    }
+
+    botoes.forEach(function (b) { b.addEventListener('click', function () { aplicar(b.dataset.idioma); }); });
+    var pedido = new URLSearchParams(location.search).get('lang');
+    var navegador = (navigator.language || 'pt').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
+    aplicar(pedido === 'en' || pedido === 'pt' ? pedido : navegador);
+
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var t = TEXTOS[idioma];
+      var valor = email.value.trim();
+      if (form.site.value) return mostrar('ok', t.ok);  // robô preencheu o campo escondido
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(valor) || valor.length > 254) return mostrar('erro', t.invalido);
+
+      enviar.disabled = true;
+      mostrar('', t.enviando);
+      fetch(SUPABASE_URL + '/rest/v1/rpc/entrar_lista_espera', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', apikey: SUPABASE_KEY },
+        body: JSON.stringify({ p_email: valor, p_idioma: idioma, p_origem: new URLSearchParams(location.search).get('o') || 'site' })
+      })
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (res) {
+          if (res === 'ok') { mostrar('ok', t.ok); form.reset(); }
+          else mostrar('erro', res === 'invalido' ? t.invalido : t.erro);
+        })
+        .catch(function () { mostrar('erro', t.erro); })
+        .finally(function () { enviar.disabled = false; });
+    });
+  })();
+</script>
+</body>
+</html>

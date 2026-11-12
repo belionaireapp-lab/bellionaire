@@ -8,7 +8,8 @@
 <meta name="theme-color" content="#050505">
 <meta property="og:title" content="BEllionaire · Foco & Disciplina">
 <meta property="og:description" content="Disciplina hoje. Liberdade amanhã. Em breve na App Store.">
-<meta property="og:image" content="og.png">
+<meta property="og:image" content="https://bellionaire.app/og.png">
+<meta property="og:url" content="https://bellionaire.app/">
 <link rel="icon" href="simbolo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,38 +18,40 @@
   :root {
     --fundo: #050505;
     --superficie: #121214;
+    --superficie-alta: #1c1c1f;
     --borda: #2a2a2e;
     --texto: #f5f5f5;
     --secundario: #9a9aa0;
     --dourado: #c9a75a;
     --dourado-claro: #e6cc8a;
     --perigo: #d9665b;
+    --azul: #5b8def;
+    --vermelho: #e0605a;
+    --laranja: #e8a13a;
+    --verde: #3fc1b0;
   }
   * { box-sizing: border-box; }
-  html, body { height: 100%; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: radial-gradient(90% 55% at 50% 0%, #1d180e 0%, var(--fundo) 60%) fixed, var(--fundo);
+    background: var(--fundo);
     color: var(--texto);
     font: 300 16px/1.6 Montserrat, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-  main {
-    min-height: 100%;
-    max-width: 560px;
-    margin: 0 auto;
-    padding: 28px 16px 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .topo { width: 100%; display: flex; justify-content: flex-end; }
-  .idiomas { display: flex; gap: 6px; }
+  a { color: var(--dourado-claro); }
+  b, strong { font-weight: 700; }
+
+  /* ---------- idioma ---------- */
+  body:not(.en) [lang="en"], body.en [lang="pt-BR"] { display: none !important; }
+  .idiomas { position: fixed; top: 16px; right: 16px; z-index: 20; display: flex; gap: 6px; }
   .idiomas button {
     font: 400 12px Montserrat, sans-serif;
     color: var(--secundario);
-    background: transparent;
+    background: rgba(5, 5, 5, .6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--borda);
     border-radius: 20px;
     padding: 5px 12px;
@@ -57,40 +60,33 @@
   }
   .idiomas button[aria-pressed="true"] { color: var(--dourado-claro); border-color: var(--dourado); }
 
-  .hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 0; }
-  .simbolo {
-    width: 88px; height: 88px;
-    filter: drop-shadow(0 0 28px rgba(201, 167, 90, .35));
-    animation: surgir .9s ease-out both;
+  /* ---------- hero ---------- */
+  .hero {
+    min-height: 100svh;
+    padding: 72px 16px 48px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    background: radial-gradient(90% 60% at 50% 0%, #1d180e 0%, var(--fundo) 62%);
   }
-  .marca { margin-top: 22px; font-size: 15px; letter-spacing: .28em; animation: surgir .9s .1s ease-out both; }
-  .marca b { font-weight: 700; }
-  h1 {
-    font-weight: 300;
-    font-size: clamp(30px, 8vw, 44px);
-    line-height: 1.2;
-    margin: 34px 0 14px;
-    animation: surgir .9s .2s ease-out both;
+  .hero > * { max-width: 560px; }
+  .simbolo { width: 84px; height: 84px; filter: drop-shadow(0 0 28px rgba(201, 167, 90, .35)); }
+  .marca { margin-top: 20px; font-size: 15px; letter-spacing: .28em; }
+  h1 { font-weight: 300; font-size: clamp(32px, 8.5vw, 56px); line-height: 1.15; margin: 30px 0 14px; }
+  h1 b, h2 b { color: var(--dourado-claro); }
+  .sub { color: var(--secundario); margin: 0 auto; }
+  .seta {
+    margin-top: 40px; color: var(--secundario); font-size: 12px; letter-spacing: .2em; text-transform: uppercase;
+    animation: flutuar 2.4s ease-in-out infinite;
   }
-  h1 b { font-weight: 700; color: var(--dourado-claro); }
-  .sub { color: var(--secundario); max-width: 420px; margin: 0 auto; animation: surgir .9s .3s ease-out both; }
+  .entrada { animation: surgir .9s ease-out both; }
+  .entrada:nth-child(2) { animation-delay: .08s; }
+  .entrada:nth-child(3) { animation-delay: .16s; }
+  .entrada:nth-child(4) { animation-delay: .24s; }
+  .entrada:nth-child(5) { animation-delay: .32s; }
+  .entrada:nth-child(6) { animation-delay: .4s; }
 
-  .recursos {
-    list-style: none; padding: 0; margin: 34px 0 0;
-    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; width: 100%;
-    animation: surgir .9s .4s ease-out both;
-  }
-  .recursos li {
-    background: var(--superficie);
-    border: 1px solid var(--borda);
-    border-radius: 14px;
-    padding: 14px 12px;
-    font-size: 13px;
-    color: #dcdcdf;
-  }
-  .recursos strong { display: block; font-weight: 700; color: var(--texto); font-size: 14px; margin-bottom: 2px; }
-
-  form { width: 100%; margin-top: 34px; animation: surgir .9s .5s ease-out both; }
+  /* ---------- formulário ---------- */
+  form.lista { width: 100%; margin-top: 30px; }
   .campo { display: flex; gap: 8px; }
   input[type=email] {
     flex: 1; min-width: 0;
@@ -108,155 +104,503 @@
     font: 700 15px Montserrat, sans-serif;
     color: var(--fundo);
     background: linear-gradient(135deg, #f1dca0, var(--dourado) 55%, #a8823d);
-    border: 0;
-    border-radius: 12px;
-    padding: 0 20px;
-    cursor: pointer;
-    transition: transform .15s, opacity .2s;
-    white-space: nowrap;
+    border: 0; border-radius: 12px; padding: 0 20px;
+    cursor: pointer; white-space: nowrap;
+    transition: transform .15s, opacity .2s, box-shadow .3s;
   }
+  button.enviar:hover { box-shadow: 0 0 24px rgba(201, 167, 90, .35); }
   button.enviar:active { transform: scale(.97); }
   button.enviar:disabled { opacity: .6; cursor: default; }
   .mel { position: absolute; left: -9999px; }
   .aviso { min-height: 22px; margin-top: 10px; font-size: 13px; color: var(--secundario); }
   .aviso.ok { color: var(--dourado-claro); }
   .aviso.erro { color: var(--perigo); }
-  .consent { font-size: 11px; color: var(--secundario); margin-top: 4px; }
-  a { color: var(--dourado-claro); }
+  .consent { font-size: 11px; color: var(--secundario); margin: 4px 0 0; }
 
-  footer { color: var(--secundario); font-size: 12px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  /* ---------- galeria (parallax) ---------- */
+  .galeria {
+    position: relative;
+    height: 115vh; min-height: 720px;
+    overflow: hidden;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+    padding: 0 14px;
+    -webkit-mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
+            mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
+  }
+  .coluna { display: flex; flex-direction: column; gap: 14px; will-change: transform; }
+  .cartao-frase {
+    position: relative; aspect-ratio: 4 / 5;
+    border-radius: 18px; overflow: hidden;
+    background: #111 center / cover no-repeat;
+    display: flex; align-items: center; justify-content: center;
+    padding: 14px; text-align: center;
+    font-size: clamp(12px, 1.9vw, 19px); line-height: 1.35;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .5);
+  }
+  .cartao-frase::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .52); }
+  .cartao-frase span { position: relative; text-shadow: 0 2px 10px rgba(0, 0, 0, .7); }
+  .cartao-frase b { color: #fff; }
+  .galeria-titulo {
+    position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 16px;
+  }
+  .galeria-titulo h2 {
+    font-weight: 300; font-size: clamp(28px, 6vw, 52px); line-height: 1.15; margin: 0;
+    padding: 20px 28px; border-radius: 20px;
+    background: rgba(5, 5, 5, .72);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* ---------- cards empilhados ---------- */
+  .pilha { max-width: 980px; margin: 0 auto; padding: 80px 16px 40px; }
+  .pilha-intro { text-align: center; margin-bottom: 40px; }
+  .rotulo { color: var(--dourado); font-size: 12px; letter-spacing: .25em; text-transform: uppercase; }
+  h2 { font-weight: 300; font-size: clamp(26px, 5vw, 42px); line-height: 1.2; margin: 10px 0 0; }
+  .recurso {
+    position: sticky; top: calc(64px + var(--i) * 16px);
+    margin-bottom: 28px; min-height: 460px;
+    display: grid; grid-template-columns: 1.05fr 1fr; gap: 24px; align-items: center;
+    padding: 36px;
+    border-radius: 28px;
+    background: linear-gradient(160deg, #17161a, #0d0d0f 70%);
+    border: 1px solid var(--borda);
+    box-shadow: 0 -20px 50px rgba(0, 0, 0, .55);
+    transform-origin: 50% 0;
+    will-change: transform;
+  }
+  .recurso .num { font-weight: 700; color: var(--dourado); font-size: 14px; letter-spacing: .2em; }
+  .recurso h3 { font-weight: 700; font-size: clamp(24px, 4vw, 34px); line-height: 1.2; margin: 10px 0 12px; }
+  .recurso p { color: #c9c9ce; margin: 0; }
+  .demo {
+    min-height: 300px; border-radius: 20px;
+    background: var(--fundo); border: 1px solid var(--borda);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px; overflow: hidden; position: relative;
+  }
+
+  /* demo 1: frases trocando */
+  .demo-frases { background: #000 center / cover no-repeat; transition: background-image .8s; }
+  .demo-frases::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .55); }
+  .demo-frases .texto {
+    position: relative; text-align: center; font-size: 20px; line-height: 1.4;
+    transition: opacity .6s, transform .6s;
+  }
+  .demo-frases .texto.saindo { opacity: 0; transform: translateY(8px); }
+
+  /* demo 2: pomodoro */
+  .anel { width: 200px; height: 200px; position: relative; }
+  .anel svg { transform: rotate(-90deg); }
+  .anel circle { fill: none; stroke-width: 6; }
+  .anel .trilho { stroke: var(--superficie-alta); }
+  .anel .progresso {
+    stroke: var(--dourado); stroke-linecap: round;
+    stroke-dasharray: 565; stroke-dashoffset: 565;
+    transition: stroke-dashoffset 3.5s cubic-bezier(.3, .7, .3, 1);
+  }
+  .visivel .anel .progresso { stroke-dashoffset: 120; }
+  .anel .tempo {
+    position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .anel .tempo strong { font-size: 40px; letter-spacing: .02em; }
+  .anel .tempo span { color: var(--secundario); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
+
+  /* demo 3: atributos */
+  .atributos { width: 100%; display: grid; gap: 16px; }
+  .attr { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: center; }
+  .attr .ic {
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+  }
+  .attr .topo { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; }
+  .attr .topo b { font-size: 12px; }
+  .barra { height: 6px; border-radius: 3px; background: var(--superficie-alta); overflow: hidden; }
+  .barra i { display: block; height: 100%; width: 0; border-radius: 3px; transition: width 1.6s cubic-bezier(.3, .7, .3, 1); }
+  .visivel .barra i { width: var(--v); }
+
+  /* demo 4: patentes */
+  .escada { list-style: none; margin: 0; padding: 0; width: 100%; display: grid; gap: 6px; }
+  .escada li {
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 12px; border-radius: 10px;
+    font-size: 13px; color: var(--secundario);
+    border: 1px solid transparent;
+    opacity: .35; transform: translateX(-8px);
+    transition: opacity .5s, transform .5s, border-color .5s, color .5s;
+  }
+  .escada li i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); box-shadow: 0 0 10px var(--c); flex: none; }
+  .visivel .escada li { opacity: 1; transform: none; }
+  .escada li.atual { color: var(--texto); border-color: var(--c); background: rgba(255, 255, 255, .03); font-weight: 700; }
+
+  /* ---------- final ---------- */
+  .final {
+    text-align: center; padding: 100px 16px 60px;
+    background: radial-gradient(70% 60% at 50% 100%, #1d180e 0%, var(--fundo) 70%);
+  }
+  .final .caixa { max-width: 560px; margin: 0 auto; }
+  footer {
+    color: var(--secundario); font-size: 12px; padding: 24px 16px 36px;
+    display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+  }
   footer a { color: var(--secundario); text-decoration: none; }
   footer a:hover { color: var(--dourado-claro); }
 
-  /* Só dentro do body: o <html lang> também muda e não pode ser escondido. */
-  body:not(.en) [lang="en"], body.en [lang="pt-BR"] { display: none !important; }
+  /* ---------- revelar ao rolar ---------- */
+  .revelar { opacity: 0; transform: translateY(24px); transition: opacity .8s ease-out, transform .8s ease-out; }
+  .revelar.visivel { opacity: 1; transform: none; }
 
   @keyframes surgir { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  @keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  @media (max-width: 760px) {
+    .galeria { grid-template-columns: repeat(2, minmax(0, 1fr)); height: 100vh; }
+    .galeria .coluna:nth-child(3) { display: none; }
+    .recurso { grid-template-columns: 1fr; padding: 24px; min-height: 0; top: calc(56px + var(--i) * 12px); }
+    .demo { min-height: 240px; }
+  }
   @media (max-width: 420px) {
     .campo { flex-direction: column; }
     button.enviar { padding: 14px; }
   }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before { animation: none !important; transition: none !important; }
+    .revelar { opacity: 1; transform: none; }
+    .coluna, .recurso { transform: none !important; }
+  }
 </style>
 </head>
 <body>
+<div class="idiomas">
+  <button type="button" data-idioma="pt" aria-pressed="true">PT</button>
+  <button type="button" data-idioma="en" aria-pressed="false">EN</button>
+</div>
+
 <main>
-  <div class="topo">
-    <div class="idiomas">
-      <button type="button" data-idioma="pt" aria-pressed="true">PT</button>
-      <button type="button" data-idioma="en" aria-pressed="false">EN</button>
-    </div>
-  </div>
-
+  <!-- HERO -->
   <section class="hero">
-    <img class="simbolo" src="simbolo.svg" alt="">
-    <div class="marca">BE<b>llionaire</b></div>
-
-    <h1 lang="pt-BR">Disciplina hoje.<br><b>Liberdade amanhã.</b></h1>
-    <h1 lang="en">Discipline today.<br><b>Freedom tomorrow.</b></h1>
-
-    <p class="sub" lang="pt-BR">O app para quem constrói em silêncio: frases diárias, foco profundo,
-      tarefas que viram pontos e um ranking para subir de patente.</p>
-    <p class="sub" lang="en">The app for those who build in silence: daily quotes, deep focus,
-      tasks that turn into points and a ranking to climb.</p>
-
-    <ul class="recursos" lang="pt-BR">
-      <li><strong>Frases diárias</strong>Mentalidade todo dia</li>
-      <li><strong>Modo foco</strong>Pomodoro sem desculpas</li>
-      <li><strong>Tarefas com XP</strong>Treino, estudo, leitura</li>
-      <li><strong>Ranking</strong>De Estagiário a BEllionaire</li>
-    </ul>
-    <ul class="recursos" lang="en">
-      <li><strong>Daily quotes</strong>Mindset every day</li>
-      <li><strong>Focus mode</strong>Pomodoro, no excuses</li>
-      <li><strong>Tasks with XP</strong>Workouts, study, reading</li>
-      <li><strong>Ranking</strong>From Intern to BEllionaire</li>
-    </ul>
-
-    <form id="lista" novalidate>
-      <div class="campo">
-        <label for="email" class="mel">E-mail</label>
-        <input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required
-               placeholder="seu@email.com">
-        <input class="mel" name="site" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="enviar" type="submit">
-          <span lang="pt-BR">Quero acesso</span><span lang="en">Get early access</span>
-        </button>
-      </div>
-      <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
-      <p class="consent" lang="pt-BR">Só vamos usar seu e-mail para avisar do lançamento.
-        Veja a <a href="privacidade.html">política de privacidade</a>.</p>
-      <p class="consent" lang="en">We'll only use your email to tell you when we launch.
-        See our <a href="privacidade.html?lang=en">privacy policy</a>.</p>
-    </form>
+    <img class="simbolo entrada" src="simbolo.svg" alt="">
+    <div class="marca entrada">BE<b>llionaire</b></div>
+    <h1 class="entrada">
+      <span lang="pt-BR">Disciplina hoje.<br><b>Liberdade amanhã.</b></span>
+      <span lang="en">Discipline today.<br><b>Freedom tomorrow.</b></span>
+    </h1>
+    <p class="sub entrada">
+      <span lang="pt-BR">O app para quem constrói em silêncio: frases diárias, foco profundo,
+        tarefas que viram pontos e um ranking para subir de patente.</span>
+      <span lang="en">The app for those who build in silence: daily quotes, deep focus,
+        tasks that turn into points and a ranking to climb.</span>
+    </p>
+    <form class="lista entrada" novalidate></form>
+    <div class="seta entrada"><span lang="pt-BR">Role</span><span lang="en">Scroll</span> ↓</div>
   </section>
 
-  <footer>
-    <a href="https://www.instagram.com/bellionaireapp/" rel="noopener">Instagram</a>
-    <a href="privacidade.html" id="link-privacidade">
-      <span lang="pt-BR">Privacidade</span><span lang="en">Privacy</span>
-    </a>
-    <a href="mailto:belionaireapp@gmail.com">belionaireapp@gmail.com</a>
-  </footer>
+  <!-- GALERIA -->
+  <section class="galeria" aria-hidden="true">
+    <div class="coluna" data-vel="-0.35"></div>
+    <div class="coluna" data-vel="0.25"></div>
+    <div class="coluna" data-vel="-0.15"></div>
+    <div class="galeria-titulo">
+      <h2>
+        <span lang="pt-BR">Uma frase certa<br><b>muda o seu dia.</b></span>
+        <span lang="en">The right words<br><b>change your day.</b></span>
+      </h2>
+    </div>
+  </section>
+
+  <!-- CARDS EMPILHADOS -->
+  <section class="pilha">
+    <div class="pilha-intro revelar">
+      <div class="rotulo"><span lang="pt-BR">O que tem no app</span><span lang="en">Inside the app</span></div>
+      <h2>
+        <span lang="pt-BR">Tudo para você <b>não parar</b>.</span>
+        <span lang="en">Everything to keep you <b>going</b>.</span>
+      </h2>
+    </div>
+
+    <article class="recurso" style="--i:0">
+      <div>
+        <div class="num">01</div>
+        <h3><span lang="pt-BR">Frases que acendem</span><span lang="en">Quotes that ignite</span></h3>
+        <p lang="pt-BR">Mentalidade, disciplina, riqueza e superação. Escolha seus temas, receba lembretes ao longo do dia
+          e guarde as que te pegam.</p>
+        <p lang="en">Mindset, discipline, wealth and resilience. Pick your topics, get reminders through the day
+          and save the ones that hit home.</p>
+      </div>
+      <div class="demo demo-frases"><div class="texto"></div></div>
+    </article>
+
+    <article class="recurso" style="--i:1">
+      <div>
+        <div class="num">02</div>
+        <h3><span lang="pt-BR">Foco sem desculpas</span><span lang="en">Focus, no excuses</span></h3>
+        <p lang="pt-BR">Pomodoro configurável que continua mesmo com o app fechado. No modo rígido, sair do app
+          anula o ciclo. Foco de verdade vale mais pontos.</p>
+        <p lang="en">A configurable Pomodoro that keeps running with the app closed. In strict mode, leaving the app
+          voids the cycle. Real focus earns more points.</p>
+      </div>
+      <div class="demo">
+        <div class="anel">
+          <svg width="200" height="200" viewBox="0 0 200 200"><circle class="trilho" cx="100" cy="100" r="90"/><circle class="progresso" cx="100" cy="100" r="90"/></svg>
+          <div class="tempo"><strong class="relogio">25:00</strong><span lang="pt-BR">Foco</span><span lang="en">Focus</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="recurso" style="--i:2">
+      <div>
+        <div class="num">03</div>
+        <h3><span lang="pt-BR">Evolua como num RPG</span><span lang="en">Level up like an RPG</span></h3>
+        <p lang="pt-BR">Estudo vira <b>Inteligência</b>, treino vira <b>Força</b>, sequência vira <b>Disciplina</b> e dias
+          perfeitos viram <b>Foco</b>. Tudo validado: nada de pontos de mentira.</p>
+        <p lang="en">Study builds <b>Intelligence</b>, workouts build <b>Strength</b>, streaks build <b>Discipline</b> and
+          perfect days build <b>Focus</b>. All validated: no fake points.</p>
+      </div>
+      <div class="demo">
+        <div class="atributos">
+          <div class="attr"><div class="ic" style="background:#5b8def22;color:var(--azul)">✦</div><div><div class="topo"><span><span lang="pt-BR">Inteligência</span><span lang="en">Intelligence</span></span><b style="color:var(--azul)">Nv. 12</b></div><div class="barra"><i style="--v:72%;background:var(--azul)"></i></div></div></div>
+          <div class="attr"><div class="ic" style="background:#e0605a22;color:var(--vermelho)">▲</div><div><div class="topo"><span><span lang="pt-BR">Força</span><span lang="en">Strength</span></span><b style="color:var(--vermelho)">Nv. 9</b></div><div class="barra"><i style="--v:45%;background:var(--vermelho)"></i></div></div></div>
+          <div class="attr"><div class="ic" style="background:#e8a13a22;color:var(--laranja)">●</div><div><div class="topo"><span><span lang="pt-BR">Disciplina</span><span lang="en">Discipline</span></span><b style="color:var(--laranja)">Nv. 15</b></div><div class="barra"><i style="--v:88%;background:var(--laranja)"></i></div></div></div>
+          <div class="attr"><div class="ic" style="background:#3fc1b022;color:var(--verde)">◎</div><div><div class="topo"><span><span lang="pt-BR">Foco</span><span lang="en">Focus</span></span><b style="color:var(--verde)">Nv. 7</b></div><div class="barra"><i style="--v:30%;background:var(--verde)"></i></div></div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="recurso" style="--i:3">
+      <div>
+        <div class="num">04</div>
+        <h3><span lang="pt-BR">De Estagiário a BEllionaire</span><span lang="en">From Intern to BEllionaire</span></h3>
+        <p lang="pt-BR">Suba de patente somando seus atributos e dispute o ranking da semana com quem também está
+          construindo algo grande.</p>
+        <p lang="en">Climb the ranks by growing your stats and compete in the weekly ranking with people who are also
+          building something big.</p>
+      </div>
+      <div class="demo"><ul class="escada"></ul></div>
+    </article>
+  </section>
+
+  <!-- FINAL -->
+  <section class="final">
+    <div class="caixa revelar">
+      <div class="rotulo"><span lang="pt-BR">Em breve na App Store</span><span lang="en">Coming soon to the App Store</span></div>
+      <h2>
+        <span lang="pt-BR">Seja um dos <b>primeiros</b>.</span>
+        <span lang="en">Be one of the <b>first</b>.</span>
+      </h2>
+      <form class="lista" novalidate></form>
+    </div>
+  </section>
 </main>
+
+<footer>
+  <a href="https://www.instagram.com/bellionaireapp/" rel="noopener">Instagram</a>
+  <a href="privacidade.html" class="link-privacidade"><span lang="pt-BR">Privacidade</span><span lang="en">Privacy</span></a>
+  <a href="mailto:belionaireapp@gmail.com">belionaireapp@gmail.com</a>
+  <span><span lang="pt-BR">Fotos:</span><span lang="en">Photos:</span> Unsplash</span>
+</footer>
+
+<template id="modelo-form">
+  <div class="campo">
+    <input name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required aria-label="E-mail">
+    <input class="mel" name="site" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="enviar" type="submit"><span lang="pt-BR">Quero acesso</span><span lang="en">Get early access</span></button>
+  </div>
+  <div class="aviso" role="status" aria-live="polite"></div>
+  <p class="consent" lang="pt-BR">Só vamos usar seu e-mail para avisar do lançamento.
+    Veja a <a href="privacidade.html" class="link-privacidade">política de privacidade</a>.</p>
+  <p class="consent" lang="en">We'll only use your email to tell you when we launch.
+    See our <a href="privacidade.html?lang=en" class="link-privacidade">privacy policy</a>.</p>
+</template>
+
 <script>
   (function () {
     // Chave publishable do Supabase: é pública por design; só libera a função da lista.
     var SUPABASE_URL = 'https://oqxiijxprypyxymexflf.supabase.co';
     var SUPABASE_KEY = 'sb_publishable_VrCJwukN9Q-eeBxRckAf5A_1O4mjKoV';
+    var movimento = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     var TEXTOS = {
       pt: { ok: 'Pronto! Você está na lista. Avisamos no lançamento.', invalido: 'Confira o e-mail.',
-            erro: 'Não deu certo agora. Tente de novo em instantes.', enviando: 'Enviando…' },
+            erro: 'Não deu certo agora. Tente de novo em instantes.', enviando: 'Enviando…', placeholder: 'seu@email.com' },
       en: { ok: "You're in! We'll let you know at launch.", invalido: 'Please check your email.',
-            erro: 'Something went wrong. Please try again shortly.', enviando: 'Sending…' }
+            erro: 'Something went wrong. Please try again shortly.', enviando: 'Sending…', placeholder: 'you@email.com' }
     };
+    var FRASES = {
+      pt: ['Ninguém vai vir te <b>salvar</b>.<br>Então <b>levanta</b>.', 'Não é sorte.<br>É <b>constância</b>.',
+           '<b>Silêncio</b> no processo.<br><b>Barulho</b> no resultado.', 'Enquanto eles dormem,<br>eu <b>construo</b>.',
+           'Você não está atrasado.<br>Está <b>se preparando</b>.', 'O preço do sucesso<br>se paga <b>adiantado</b>.',
+           'Se fosse fácil,<br><b>todo mundo</b> teria.', '<b>Disciplina</b> é fazer<br>mesmo <b>sem vontade</b>.',
+           'Eles riram do <b>começo</b>.<br>Vão aplaudir o <b>final</b>.', 'Foco no que<br><b>depende de você</b>.'],
+      en: ['Nobody is coming to <b>save</b> you.<br>So <b>get up</b>.', "It's not luck.<br>It's <b>consistency</b>.",
+           '<b>Silent</b> in the process.<br><b>Loud</b> in the results.', 'While they sleep,<br>I <b>build</b>.',
+           "You're not late.<br>You're <b>getting ready</b>.", 'The price of success<br>is paid <b>up front</b>.',
+           "If it were easy,<br><b>everyone</b> would have it.", '<b>Discipline</b> is doing it<br>even when you <b>don\'t feel like it</b>.',
+           'They laughed at the <b>start</b>.<br>They\'ll clap at the <b>finish</b>.', 'Focus on what<br><b>depends on you</b>.']
+    };
+    var FOTOS = ['horizonte', 'cidade', 'velocidade', 'via-lactea', 'arranha-ceu', 'oceano', 'ponte',
+                 'aurora', 'montanha', 'por-do-sol', 'tempestade', 'estrelas', 'dunas', 'cais'];
+    var PATENTES = [
+      ['Estagiário', 'Intern', '#8E8E93'], ['Analista', 'Analyst', '#B0723F'], ['Coordenador', 'Coordinator', '#C98A52'],
+      ['Gerente', 'Manager', '#B8BEC8'], ['Diretor', 'Director', '#DDE1E8'], ['Vice-Presidente', 'Vice President', '#C9A75A'],
+      ['CEO', 'CEO', '#E6CC8A'], ['Fundador', 'Founder', '#9FD3D6'], ['Milionário', 'Millionaire', '#7FC8FF'],
+      ['BEllionaire', 'BEllionaire', '#F2D27A']
+    ];
     var idioma = 'pt';
-    var botoes = document.querySelectorAll('[data-idioma]');
-    var email = document.getElementById('email');
-    var aviso = document.getElementById('aviso');
-    var form = document.getElementById('lista');
-    var enviar = form.querySelector('button.enviar');
 
+    // ---------- galeria ----------
+    var colunas = document.querySelectorAll('.galeria .coluna');
+    function montarGaleria() {
+      var frases = FRASES[idioma];
+      colunas.forEach(function (col, c) {
+        var html = '';
+        for (var k = 0; k < 7; k++) {
+          var n = (c * 7 + k);
+          html += '<div class="cartao-frase" style="background-image:url(img/' + FOTOS[n % FOTOS.length] +
+                  '.jpg)"><span>' + frases[(n * 3 + c) % frases.length] + '</span></div>';
+        }
+        col.innerHTML = html;
+      });
+    }
+
+    // ---------- demo de frases ----------
+    var demo = document.querySelector('.demo-frases');
+    var demoTexto = demo.querySelector('.texto');
+    var demoI = 0;
+    function trocarFrase() {
+      demoTexto.classList.add('saindo');
+      setTimeout(function () {
+        demoI = (demoI + 1) % FRASES[idioma].length;
+        demoTexto.innerHTML = FRASES[idioma][demoI];
+        demo.style.backgroundImage = 'url(img/' + FOTOS[(demoI + 4) % FOTOS.length] + '.jpg)';
+        demoTexto.classList.remove('saindo');
+      }, 600);
+    }
+
+    // ---------- escada de patentes ----------
+    var escada = document.querySelector('.escada');
+    function montarEscada() {
+      escada.innerHTML = PATENTES.slice().reverse().map(function (p, i) {
+        return '<li style="--c:' + p[2] + ';transition-delay:' + (i * 60) + 'ms"><i></i>' + (idioma === 'en' ? p[1] : p[0]) + '</li>';
+      }).join('');
+    }
+    var subindo = null;
+    function subirPatente() {
+      if (subindo) return;
+      var itens = [].slice.call(escada.children).reverse();
+      var n = 0;
+      subindo = setInterval(function () {
+        itens.forEach(function (li, i) { li.classList.toggle('atual', i === n); });
+        n = (n + 1) % itens.length;
+      }, 700);
+    }
+
+    // ---------- relógio do pomodoro ----------
+    var relogio = document.querySelector('.relogio');
+    var rodou = false;
+    function correrRelogio() {
+      if (rodou) return;
+      rodou = true;
+      var seg = 25 * 60, alvo = 19 * 60 + 12, ini = performance.now();
+      (function passo(t) {
+        var p = Math.min(1, (t - ini) / 3500);
+        var s = Math.round(seg - (seg - alvo) * (1 - Math.pow(1 - p, 3)));
+        relogio.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+        if (p < 1) requestAnimationFrame(passo);
+      })(ini);
+    }
+
+    // ---------- revelar ao rolar ----------
+    var obs = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('visivel');
+        if (e.target.querySelector('.relogio')) correrRelogio();
+        if (e.target.querySelector('.escada')) subirPatente();
+        obs.unobserve(e.target);
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.revelar, .recurso').forEach(function (el) { obs.observe(el); });
+
+    // ---------- parallax + pilha (um único laço por frame) ----------
+    var galeria = document.querySelector('.galeria');
+    var recursos = [].slice.call(document.querySelectorAll('.recurso'));
+    var agendado = false;
+    function quadro() {
+      agendado = false;
+      var vh = innerHeight;
+      var r = galeria.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < vh) {
+        var p = (vh - r.top) / (vh + r.height) - 0.5;  // -0.5 → 0.5 enquanto passa pela tela
+        colunas.forEach(function (col) {
+          col.style.transform = 'translate3d(0,' + (p * parseFloat(col.dataset.vel) * r.height * 1.6) + 'px,0)';
+        });
+      }
+      recursos.forEach(function (el, i) {
+        var prox = recursos[i + 1];
+        if (!prox) return;
+        var a = el.getBoundingClientRect(), b = prox.getBoundingClientRect();
+        var cobre = Math.max(0, Math.min(1, (a.bottom - b.top) / a.height));
+        el.style.transform = 'scale(' + (1 - cobre * 0.06) + ')';
+        el.style.filter = 'brightness(' + (1 - cobre * 0.45) + ')';
+      });
+    }
+    function agendar() { if (!agendado) { agendado = true; requestAnimationFrame(quadro); } }
+    if (movimento) {
+      addEventListener('scroll', agendar, { passive: true });
+      addEventListener('resize', agendar);
+    }
+
+    // ---------- formulários ----------
+    var modelo = document.getElementById('modelo-form');
+    document.querySelectorAll('form.lista').forEach(function (form) {
+      form.appendChild(modelo.content.cloneNode(true));
+      var email = form.email, aviso = form.querySelector('.aviso'), enviar = form.querySelector('.enviar');
+      function mostrar(tipo, texto) { aviso.className = 'aviso ' + tipo; aviso.textContent = texto; }
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var t = TEXTOS[idioma];
+        var valor = email.value.trim();
+        if (form.site.value) return mostrar('ok', t.ok);  // robô preencheu o campo escondido
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(valor) || valor.length > 254) return mostrar('erro', t.invalido);
+        enviar.disabled = true;
+        mostrar('', t.enviando);
+        fetch(SUPABASE_URL + '/rest/v1/rpc/entrar_lista_espera', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', apikey: SUPABASE_KEY },
+          body: JSON.stringify({ p_email: valor, p_idioma: idioma,
+                                 p_origem: new URLSearchParams(location.search).get('o') || 'site' })
+        })
+          .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+          .then(function (res) {
+            if (res === 'ok') { mostrar('ok', t.ok); form.reset(); }
+            else mostrar('erro', res === 'invalido' ? t.invalido : t.erro);
+          })
+          .catch(function () { mostrar('erro', t.erro); })
+          .finally(function () { enviar.disabled = false; });
+      });
+    });
+
+    // ---------- idioma ----------
+    var botoes = document.querySelectorAll('[data-idioma]');
     function aplicar(i) {
       idioma = i;
       document.body.classList.toggle('en', i === 'en');
       document.documentElement.lang = i === 'en' ? 'en' : 'pt-BR';
-      email.placeholder = i === 'en' ? 'you@email.com' : 'seu@email.com';
-      document.getElementById('link-privacidade').href = 'privacidade.html' + (i === 'en' ? '?lang=en' : '');
+      document.querySelectorAll('input[type=email]').forEach(function (e) { e.placeholder = TEXTOS[i].placeholder; });
+      document.querySelectorAll('.link-privacidade').forEach(function (a) { a.href = 'privacidade.html' + (i === 'en' ? '?lang=en' : ''); });
       botoes.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.idioma === i)); });
+      montarGaleria();
+      demoTexto.innerHTML = FRASES[i][demoI];
+      demo.style.backgroundImage = 'url(img/' + FOTOS[(demoI + 4) % FOTOS.length] + '.jpg)';
+      var subia = !!subindo;
+      clearInterval(subindo); subindo = null;
+      montarEscada();
+      if (subia || escada.closest('.visivel')) { escada.closest('.recurso').classList.add('visivel'); subirPatente(); }
+      agendar();
     }
-    function mostrar(tipo, texto) {
-      aviso.className = 'aviso ' + tipo;
-      aviso.textContent = texto;
-    }
-
     botoes.forEach(function (b) { b.addEventListener('click', function () { aplicar(b.dataset.idioma); }); });
     var pedido = new URLSearchParams(location.search).get('lang');
     var navegador = (navigator.language || 'pt').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
     aplicar(pedido === 'en' || pedido === 'pt' ? pedido : navegador);
-
-    form.addEventListener('submit', function (ev) {
-      ev.preventDefault();
-      var t = TEXTOS[idioma];
-      var valor = email.value.trim();
-      if (form.site.value) return mostrar('ok', t.ok);  // robô preencheu o campo escondido
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(valor) || valor.length > 254) return mostrar('erro', t.invalido);
-
-      enviar.disabled = true;
-      mostrar('', t.enviando);
-      fetch(SUPABASE_URL + '/rest/v1/rpc/entrar_lista_espera', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', apikey: SUPABASE_KEY },
-        body: JSON.stringify({ p_email: valor, p_idioma: idioma, p_origem: new URLSearchParams(location.search).get('o') || 'site' })
-      })
-        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
-        .then(function (res) {
-          if (res === 'ok') { mostrar('ok', t.ok); form.reset(); }
-          else mostrar('erro', res === 'invalido' ? t.invalido : t.erro);
-        })
-        .catch(function () { mostrar('erro', t.erro); })
-        .finally(function () { enviar.disabled = false; });
-    });
+    if (movimento) setInterval(trocarFrase, 3200);
   })();
 </script>
 </body>

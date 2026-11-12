@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BEllionaire · Privacidade</title>
+<meta name="description" content="Política de Privacidade do app BEllionaire">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fundo: #050505;
+    --superficie: #121214;
+    --borda: #2a2a2e;
+    --texto: #f5f5f5;
+    --secundario: #9a9aa0;
+    --dourado: #c9a75a;
+    --dourado-claro: #e6cc8a;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: radial-gradient(120% 60% at 50% 0%, #1a160d 0%, var(--fundo) 55%) fixed, var(--fundo);
+    color: var(--texto);
+    font: 300 16px/1.7 Montserrat, system-ui, sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 20px 80px; }
+  header { text-align: center; margin-bottom: 40px; }
+  .marca {
+    display: inline-block;
+    border: 1px solid rgba(201, 167, 90, .55);
+    padding: 8px 18px;
+    letter-spacing: .25em;
+    font-size: 15px;
+  }
+  .marca b { font-weight: 700; }
+  h1 { font-weight: 700; font-size: 30px; margin: 28px 0 6px; letter-spacing: .01em; }
+  .data { color: var(--secundario); font-size: 13px; }
+  .idiomas { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+  .idiomas button {
+    font: 400 13px Montserrat, sans-serif;
+    color: var(--texto);
+    background: transparent;
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .idiomas button[aria-pressed="true"] {
+    background: var(--dourado); border-color: var(--dourado); color: var(--fundo); font-weight: 700;
+  }
+  .resumo {
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-left: 3px solid var(--dourado);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+  }
+  .resumo h2 { margin-top: 0; }
+  .resumo ul { margin: 0; padding-left: 20px; }
+  h2 {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--dourado-claro);
+    margin: 36px 0 10px;
+  }
+  p, li { color: #dcdcdf; }
+  strong { font-weight: 700; color: var(--texto); }
+  a { color: var(--dourado-claro); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--borda); }
+  th { color: var(--secundario); font-weight: 400; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+  .tabela { overflow-x: auto; }
+  footer { margin-top: 56px; text-align: center; color: var(--secundario); font-size: 13px; }
+  main [lang="en"] { display: none; }
+  body.en main [lang="pt-BR"] { display: none; }
+  body.en main [lang="en"] { display: block; }
+  @media (max-width: 520px) { h1 { font-size: 24px; } main { padding-top: 32px; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="marca">BE<b>llionaire</b></div>
+    <h1 lang="pt-BR">Política de Privacidade</h1>
+    <h1 lang="en">Privacy Policy</h1>
+    <div class="data" lang="pt-BR">Última atualização: 12 de novembro de 2026</div>
+    <div class="data" lang="en">Last updated: November 12, 2026</div>
+    <div class="idiomas">
+      <button type="button" data-idioma="pt" aria-pressed="true">Português</button>
+      <button type="button" data-idioma="en" aria-pressed="false">English</button>
+    </div>
+  </header>
+
+  <!-- ===================== PORTUGUÊS ===================== -->
+  <article lang="pt-BR">
+    <section class="resumo">
+      <h2>Resumo</h2>
+      <ul>
+        <li>Seu perfil, suas tarefas e seu histórico de foco <strong>ficam só no seu aparelho</strong>.</li>
+        <li>Só vai para a internet o que o <strong>ranking</strong> precisa: um apelido e seus pontos.</li>
+        <li>Pagamentos são feitos pela <strong>Apple</strong>. Nós nunca vemos dados do seu cartão.</li>
+        <li><strong>Sem anúncios, sem rastreamento e sem venda de dados.</strong></li>
+        <li>Você pode apagar seus dados do ranking a qualquer momento, dentro do app.</li>
+      </ul>
+    </section>
+
+    <h2>1. Quem somos</h2>
+    <p>O BEllionaire é um app de motivação e foco desenvolvido por <strong>Gleidimar Luiz de Deus Junior</strong>
+      (“nós”), controlador dos dados tratados nos termos da Lei Geral de Proteção de Dados
+      (Lei nº 13.709/2018, “LGPD”). Contato: <a href="mailto:belionaireapp@gmail.com">belionaireapp@gmail.com</a>.</p>
+
+    <h2>2. Dados que ficam só no seu aparelho</h2>
+    <p>As informações abaixo são gravadas localmente no seu celular e <strong>não são enviadas
+      para nós</strong>: nome e objetivos informados no perfil, tarefas, sessões de foco,
+      pontos e nível, frases favoritas, tema, idioma e horários de lembrete.
+      Os lembretes são notificações locais, agendadas pelo próprio aparelho.
+      Ao desinstalar o app, esses dados são apagados.</p>
+
+    <h2>3. Dados tratados em servidores</h2>
+    <div class="tabela">
+      <table>
+        <thead><tr><th>Finalidade</th><th>Dados</th><th>Base legal (LGPD)</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Ranking semanal</strong> (opcional, assinantes)</td>
+            <td>Identificador anônimo gerado pelo app, apelido escolhido por você, tipo e horário
+              das atividades concluídas e pontos calculados.</td>
+            <td>Execução de contrato (art. 7º, V)</td>
+          </tr>
+          <tr>
+            <td><strong>Assinatura Premium</strong></td>
+            <td>Identificador anônimo de compra, produto assinado, datas de início, renovação e
+              expiração. O pagamento é processado pela Apple.</td>
+            <td>Execução de contrato (art. 7º, V)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Não coletamos e-mail, telefone, localização, contatos, fotos nem dados de saúde.
+      Seu nome do perfil <strong>não</strong> é enviado ao ranking. Apenas o apelido aparece para
+      outros usuários.</p>
+
+    <h2>4. Com quem compartilhamos</h2>
+    <p>Usamos poucos fornecedores, apenas para o app funcionar:</p>
+    <ul>
+      <li><strong>Supabase</strong>: banco de dados do ranking, hospedado no Brasil (São Paulo).</li>
+      <li><strong>RevenueCat</strong> (EUA): gestão das assinaturas.</li>
+      <li><strong>Apple</strong>: loja, pagamentos e notificações.</li>
+    </ul>
+    <p>Quando há transferência internacional (RevenueCat e Apple), ela segue as garantias do
+      art. 33 da LGPD, com fornecedores que adotam cláusulas contratuais de proteção de dados.
+      Não vendemos, alugamos nem compartilhamos dados para publicidade.</p>
+
+    <h2>5. Por quanto tempo guardamos</h2>
+    <p>Os dados do ranking ficam guardados enquanto sua participação existir e são apagados na hora
+      em que você toca em <strong>“Sair do ranking e apagar meus dados”</strong>. Registros de assinatura
+      são mantidos pelo prazo exigido por lei e pelas regras da Apple.</p>
+
+    <h2>6. Seus direitos</h2>
+    <p>Pela LGPD (art. 18), você pode pedir confirmação, acesso, correção, anonimização, portabilidade
+      ou exclusão dos seus dados, além de informações sobre o compartilhamento. A exclusão do ranking
+      pode ser feita direto no app. Para os outros pedidos, escreva para
+      <a href="mailto:belionaireapp@gmail.com">belionaireapp@gmail.com</a>. Respondemos em até 15 dias. Você também pode
+      reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
+
+    <h2>7. Segurança</h2>
+    <p>A comunicação com os servidores é criptografada (HTTPS). No banco do ranking, cada usuário só
+      consegue ler os próprios registros, e os pontos são calculados no servidor, nunca aceitos
+      direto do aparelho.</p>
+
+    <h2>8. Crianças</h2>
+    <p>O BEllionaire não é direcionado a menores de 13 anos e não coleta dados de crianças de
+      propósito. Adolescentes devem usar o app com o conhecimento dos responsáveis.</p>
+
+    <h2>9. Mudanças nesta política</h2>
+    <p>Se esta política mudar, a data no topo será atualizada. Mudanças importantes também serão
+      avisadas no app.</p>
+  </article>
+
+  <!-- ===================== ENGLISH ===================== -->
+  <article lang="en">
+    <section class="resumo">
+      <h2>Summary</h2>
+      <ul>
+        <li>Your profile, tasks and focus history <strong>stay on your device</strong>.</li>
+        <li>Only what the <strong>ranking</strong> needs goes online: a nickname and your points.</li>
+        <li>Payments are handled by <strong>Apple</strong>. We never see your card details.</li>
+        <li><strong>No ads, no tracking and no selling of data.</strong></li>
+        <li>You can delete your ranking data at any time, inside the app.</li>
+      </ul>
+    </section>
+
+    <h2>1. Who we are</h2>
+    <p>BEllionaire is a motivation and focus app developed by <strong>Gleidimar Luiz de Deus Junior</strong>
+      (“we”), the data controller under Brazil’s General Data Protection Law
+      (Law No. 13,709/2018, “LGPD”). Contact: <a href="mailto:belionaireapp@gmail.com">belionaireapp@gmail.com</a>.</p>
+
+    <h2>2. Data that stays on your device</h2>
+    <p>The following is stored locally on your phone and <strong>is not sent to us</strong>:
+      the name and goals in your profile, tasks, focus sessions, points and level, favorite quotes,
+      theme, language and reminder times. Reminders are local notifications scheduled by the device
+      itself. Uninstalling the app deletes this data.</p>
+
+    <h2>3. Data processed on servers</h2>
+    <div class="tabela">
+      <table>
+        <thead><tr><th>Purpose</th><th>Data</th><th>Legal basis (LGPD)</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Weekly ranking</strong> (optional, subscribers)</td>
+            <td>Anonymous identifier generated by the app, the nickname you choose, type and time of
+              completed activities and calculated points.</td>
+            <td>Performance of contract (art. 7, V)</td>
+          </tr>
+          <tr>
+            <td><strong>Premium subscription</strong></td>
+            <td>Anonymous purchase identifier, subscribed product, start, renewal and expiration dates.
+              Payment is processed by Apple.</td>
+            <td>Performance of contract (art. 7, V)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>We do not collect email, phone number, location, contacts, photos or health data. Your profile
+      name is <strong>not</strong> sent to the ranking. Only your nickname is visible to other users.</p>
+
+    <h2>4. Who we share data with</h2>
+    <p>We use a small number of providers, only to make the app work:</p>
+    <ul>
+      <li><strong>Supabase</strong>: ranking database, hosted in Brazil (São Paulo).</li>
+      <li><strong>RevenueCat</strong> (USA): subscription management.</li>
+      <li><strong>Apple</strong>: store, payments and notifications.</li>
+    </ul>
+    <p>International transfers (RevenueCat and Apple) follow the safeguards of LGPD art. 33, with
+      providers that adopt contractual data protection clauses. We do not sell, rent or share data for
+      advertising.</p>
+
+    <h2>5. How long we keep data</h2>
+    <p>Ranking data is kept while your participation exists and is deleted as soon as you tap
+      <strong>“Leave the ranking and delete my data”</strong>. Subscription records are kept for the period
+      required by law and by Apple’s rules.</p>
+
+    <h2>6. Your rights</h2>
+    <p>Under the LGPD (art. 18), you may request confirmation, access, correction, anonymization,
+      portability or deletion of your data, as well as information about sharing. Ranking deletion
+      can be done directly in the app. For any other request, email
+      <a href="mailto:belionaireapp@gmail.com">belionaireapp@gmail.com</a>. We reply within 15 days. You may also file a complaint
+      with Brazil’s National Data Protection Authority (ANPD).</p>
+
+    <h2>7. Security</h2>
+    <p>Communication with our servers is encrypted (HTTPS). In the ranking database each user can only
+      read their own records, and points are calculated on the server, never accepted directly from
+      the device.</p>
+
+    <h2>8. Children</h2>
+    <p>BEllionaire is not directed to children under 13 and does not knowingly collect children’s
+      data. Teenagers should use the app with their parents’ or guardians’ knowledge.</p>
+
+    <h2>9. Changes to this policy</h2>
+    <p>If this policy changes, the date at the top will be updated. Important changes will also be
+      announced in the app.</p>
+  </article>
+
+  <footer>BEllionaire · <a href="mailto:belionaireapp@gmail.com">belionaireapp@gmail.com</a></footer>
+</main>
+<script>
+  (function () {
+    var botoes = document.querySelectorAll('[data-idioma]');
+    function aplicar(idioma) {
+      document.body.classList.toggle('en', idioma === 'en');
+      document.documentElement.lang = idioma === 'en' ? 'en' : 'pt-BR';
+      botoes.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.idioma === idioma)); });
+    }
+    botoes.forEach(function (b) { b.addEventListener('click', function () { aplicar(b.dataset.idioma); }); });
+    var pedido = new URLSearchParams(location.search).get('lang');
+    var navegador = (navigator.language || 'pt').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
+    aplicar(pedido === 'en' || pedido === 'pt' ? pedido : navegador);
+  })();
+</script>
+</body>
+</html>
